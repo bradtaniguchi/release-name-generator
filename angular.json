@@ -49,6 +49,26 @@
             "es5BrowserSupport": true
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [{
+                "replace": "apps/client/src/environments/environment.ts",
+                "with": "apps/client/src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
+            },
             "production": {
               "fileReplacements": [{
                 "replace": "apps/client/src/environments/environment.ts",
