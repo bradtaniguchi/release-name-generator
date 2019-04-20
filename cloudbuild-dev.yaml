@@ -35,10 +35,16 @@ steps:
       'apps/api/environments/app.dev.yaml',
       'dist/apps/api/app.yaml'
     ]
+  - name: ubuntu
+    args: [
+      'cp',
+      'package*.json',
+      'dist/apps/api/'
+    ]
   # TODO: add tests here
   - name: gcr.io/cloud-builders/gcloud
     dir: 'dist'
     # we stop the previous versions to cut down on costs
     args: ['app', 'deploy', '--stop-previous-version', 'apps/api/app.yaml']
   - name: gcr.io/cloud-builders/gsutil
-    args: ['cp', 'dist/apps/client', 'gs://client-host-dev']
+    args: ['cp', '-r', 'dist/apps/client', 'gs://client-host-dev']

@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node main",
+    "serve": "ng serve",
     "build": "ng build",
     "build:all": "bash tools/build-all.sh",
     "deploy:all": "bash tools/deploy-all.sh",
@@ -49,6 +50,7 @@
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
     "@google-cloud/logging-winston": "^0.11.1",
+    "@google-cloud/trace-agent": "^3.6.0",
     "@nestjs/common": "5.5.0",
     "@nestjs/core": "5.5.0",
     "@ngrx/effects": "^7.4.0",
