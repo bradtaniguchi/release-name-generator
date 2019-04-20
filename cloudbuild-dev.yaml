@@ -1,0 +1,41 @@
+# cloud-build for dev environment
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+    volumes:
+      - name: 'ssh'
+        path: /root/.ssh
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'clean']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [
+      'run',
+      'build',
+      '--',
+      '--project=client',
+      '--prod',
+      '-c=dev'
+    ]
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [
+      'run',
+      'build',
+      '--',
+      '--project=api',
+      '--prod',
+      '-c=dev'
+    ]
+  - name: 'ubuntu'
+    args: [
+      'bash',
+      'cp',
+      'apps/api/environemnts/app.dev.yaml',
+      'dist/apps/api/app.yaml'
+    ]
+  # TODO: add tests here
+  - name: 'gcr.io/cloud-builders/gcloud'
+    dir: 'dist'
+    args: ['app', 'deploy', 'dist/apps/api/app.yml']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    dir: 'dist',
+    args: ['cp', 'apps/client', 'gs://client-host-dev']
