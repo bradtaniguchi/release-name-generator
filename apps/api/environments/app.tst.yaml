@@ -1,0 +1,4 @@
+# config for the tst runtime environment of app-engine-standard
+runtime: nodejs10
+env_variables:
+  runtime_env: tst

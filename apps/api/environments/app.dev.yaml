@@ -1,0 +1,4 @@
+# config for the dev runtime environment of app-engine-standard
+runtime: nodejs10
+env_variables:
+  runtime_env: dev
