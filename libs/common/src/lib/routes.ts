@@ -1,16 +1,19 @@
 export const ROUTES = {
   users: {
-    get: () => 'users',
+    root: () => 'users',
     create: () => 'users',
-    remove: (id: number) => `users/${id}`,
     list: () => 'users',
+    remove: (id: number) => `users/${id}`,
+    get: (id: number) => `users/${id}`,
     update: (id: number) => `users/${id}`
   },
   words: {
-    get: () => 'words',
+    root: () => 'words',
     create: () => 'words',
-    remove: (id: number) => `words/${id}`,
     list: () => 'words',
+    get: (id: number) => `words/${id}`,
+    remove: (id: number) => `words/${id}`,
     update: (id: number) => `words/${id}`
-  }
+  },
+  info: () => 'info'
 };

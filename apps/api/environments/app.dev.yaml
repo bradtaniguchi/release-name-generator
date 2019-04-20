@@ -2,3 +2,4 @@
 runtime: nodejs10
 env_variables:
   runtime_env: dev
+  port: 8080
