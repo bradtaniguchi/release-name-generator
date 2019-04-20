@@ -4,7 +4,8 @@ steps:
     env:
     # to suppress logging during install
     - 'CI=true'
-    args: ['install']
+    # ci is said to be faster than normal "install"
+    args: ['ci']
     # volumes:
     #   - name: 'ssh'
     #     path: /root/.ssh
@@ -31,12 +32,13 @@ steps:
   - name: ubuntu
     args: [
       'cp',
-      'apps/api/environemnts/app.dev.yaml',
+      'apps/api/environments/app.dev.yaml',
       'dist/apps/api/app.yaml'
     ]
   # TODO: add tests here
   - name: gcr.io/cloud-builders/gcloud
     dir: 'dist'
-    args: ['app', 'deploy', 'dist/apps/api/app.yml']
+    # we stop the previous versions to cut down on costs
+    args: ['app', 'deploy', '--stop-previous-version', 'dist/apps/api/app.yml']
   - name: gcr.io/cloud-builders/gsutil
     args: ['cp', 'dist/apps/client', 'gs://client-host-dev']
