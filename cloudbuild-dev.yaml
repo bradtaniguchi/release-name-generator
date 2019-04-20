@@ -2,9 +2,9 @@
 steps:
   - name: gcr.io/cloud-builders/npm
     args: ['install']
-    volumes:
-      - name: 'ssh'
-        path: /root/.ssh
+    # volumes:
+    #   - name: 'ssh'
+    #     path: /root/.ssh
   - name: gcr.io/cloud-builders/npm
     args: ['run', 'clean']
   - name: gcr.io/cloud-builders/npm
@@ -37,5 +37,4 @@ steps:
     dir: 'dist'
     args: ['app', 'deploy', 'dist/apps/api/app.yml']
   - name: gcr.io/cloud-builders/gsutil
-    dir: 'dist',
-    args: ['cp', 'apps/client', 'gs://client-host-dev']
+    args: ['cp', 'dist/apps/client', 'gs://client-host-dev']
