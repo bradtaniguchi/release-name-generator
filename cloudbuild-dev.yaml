@@ -39,6 +39,6 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     dir: 'dist'
     # we stop the previous versions to cut down on costs
-    args: ['app', 'deploy', '--stop-previous-version', 'dist/apps/api/app.yml']
+    args: ['app', 'deploy', '--stop-previous-version', 'dist/apps/api/app.ymal']
   - name: gcr.io/cloud-builders/gsutil
     args: ['cp', 'dist/apps/client', 'gs://client-host-dev']
