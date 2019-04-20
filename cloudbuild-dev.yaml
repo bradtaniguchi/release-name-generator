@@ -1,6 +1,9 @@
 # cloud-build for dev environment
 steps:
   - name: gcr.io/cloud-builders/npm
+    env:
+    # to suppress logging during install
+    - 'CI=true'
     args: ['install']
     # volumes:
     #   - name: 'ssh'
