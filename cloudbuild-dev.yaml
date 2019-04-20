@@ -30,7 +30,6 @@ steps:
     ]
   - name: ubuntu
     args: [
-      'bash',
       'cp',
       'apps/api/environemnts/app.dev.yaml',
       'dist/apps/api/app.yaml'
