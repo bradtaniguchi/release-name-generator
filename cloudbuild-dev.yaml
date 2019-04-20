@@ -34,8 +34,7 @@ steps:
       'cp',
       'apps/api/environments/app.dev.yaml',
       'dist/apps/api/app.yaml'
-    ],
-    - volume
+    ]
   # TODO: add tests here
   - name: gcr.io/cloud-builders/gcloud
     dir: 'dist'
