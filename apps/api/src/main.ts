@@ -2,13 +2,22 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  **/
-import { environment } from './environments/environment.prod';
+import { environment } from './environments/environment';
 if (environment.runtime_env === 'prod') {
   require('@google-cloud/trace-agent').start();
 }
+if (environment.runtime_env === 'local') {
+  require('dotenv').config();
+}
+
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
+
+process.on('unhandledRejection', error => {
+  // Will print "unhandledRejection err is not defined"
+  console.log('unhandledRejection', error.message);
+});
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

@@ -21,7 +21,7 @@ export const winstonLoggerFactory = (): Logger => {
     case 'local':
       return createLogger({
         level: 'silly',
-        transports: [new transports.Console()]
+        transports: [new transports.Console({ level: 'silly' })]
       });
   }
 };
